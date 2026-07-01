@@ -18,13 +18,15 @@ git add .
 git commit -m "Describe aquí los cambios que hiciste"
 git push origin main
 
-CLONACION: 
+Despues del commit, podemos revisar los commit realizados: 
+     - git log
+     -
 
+CLONACION: 
 git config user.name "sanlith340-droid" configuracion local
 git config user.email "sanlith340@gmail.com"
 
 Abrir en la carpeta donde esta trabajando la terminal 
-
      -git clone "link del repositorio "
 
 EXTRA: no olvidar borra credenciales de la pc si hay un git usuario 
