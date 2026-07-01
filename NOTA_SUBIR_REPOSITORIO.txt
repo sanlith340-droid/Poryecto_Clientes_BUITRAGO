@@ -1,0 +1,12 @@
+git init -b main
+git add README.md
+git commit -m "INICIO_DEL_PROYECTO"
+git remote add origin https://github.com/sanlith340-droid/Poryecto_Clientes_BUITRAGO.git
+git push -u origin main
+
+git config --global --add safe.directory D:/CLIENTES_SANTIAGO_BUI
+
+*EN CASO QUE NO SE RECONOZCA EL COMANDO USA 
+     
+     git --version
+     instalar git y cierra bash

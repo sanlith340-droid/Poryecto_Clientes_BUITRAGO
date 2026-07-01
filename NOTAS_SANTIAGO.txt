@@ -1,0 +1,24 @@
+//CREACION DEL PROYECTO: 
+
+1-windows : - Python -m venv .mi_env #ENTORNO VIRTUAL // vuelve usar el comando si no tiene los scripts 
+
+(para limpiar el terminar usar "clear")
+
+2-ACTIVAR EL ENTORNO : .mi_env\scripts\activate 
+
+3-Instalar los ejecutando los comandos de la consola:
+    pip install "fastapi[standard]"
+    **EN CASO DE TENER UNA VERSION ANTIGUA USA EL COMANDO QUE TE DA LA TERMINAL python.exe -m pip install --upgrade pip
+    pip list -> ver la instalacion 
+
+4-Crear el archivo main.py 
+
+5- EJCUTAR , MODO DESAROLLO :
+        MODO PRODUCCION :  uvicorn main:app --reload
+        
+       * MODO DESAROLLO  :  Fastapi dev Main.py 
+
+    VER EL SWAGGER INTERFAZ GRAFICA
+
+      server   Server started at http://127.0.0.1:8000
+      server   Documentation at http://127.0.0.1:8000/docs
