@@ -1,2 +1,6 @@
-venv/
+#Nose deben incluri los entornos virtuales ni los archivos compilados de Python 
+
+.mi_env/
+
+#pychache 
 __pycache__/

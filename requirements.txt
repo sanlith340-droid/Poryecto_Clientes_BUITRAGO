@@ -1,0 +1,6 @@
+#Maneja las dependencias del proyecto    
+
+fastapi[standard]>=0.138.2
+#Buscamos la version con pip list
+       
+

@@ -20,3 +20,4 @@ El proyecto simula el núcleo financiero de una plataforma comercial. Trabajarem
 2- GIT RECOMENDADO
 3- Gestion de entornos virtuales ('venv')
 4- Instalar Fastapi[standard]
+

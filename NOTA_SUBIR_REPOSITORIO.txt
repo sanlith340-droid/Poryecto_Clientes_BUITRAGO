@@ -10,3 +10,21 @@ git config --global --add safe.directory D:/CLIENTES_SANTIAGO_BUI
      
      git --version
      instalar git y cierra bash
+
+SUBIR LOS COMINTS: 
+
+git status **VER LOS CAMBIOS**
+git add .
+git commit -m "Describe aquí los cambios que hiciste"
+git push origin main
+
+CLONACION: 
+
+git config user.name "sanlith340-droid" configuracion local
+git config user.email "sanlith340@gmail.com"
+
+Abrir en la carpeta donde esta trabajando la terminal 
+
+     -git clone "link del repositorio "
+
+EXTRA: no olvidar borra credenciales de la pc si hay un git usuario 
