@@ -1,6 +1,5 @@
 from pydantic import BaseModel
-
-from modelos.clientes import Cliente
+from clientes import Cliente
 
 #Crear el modelo de transacciones (id,fecha, vr_total, cliente )
 
@@ -10,6 +9,9 @@ class FacturaBase(BaseModel):
     cliente : Cliente  # Esta es la relacion con el cliente (objeto)
     
 class FacturaCrear(FacturaBase):
+    pass
+
+class FacturaEditar(FacturaBase):
     pass
 
 class Factura(FacturaBase):

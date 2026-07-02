@@ -40,3 +40,4 @@ El proyecto simula el núcleo financiero de una plataforma comercial. Trabajarem
 6. Editar endpoint crear_clientes aplicando typing.
 
 7. Comprobar el funcionamiento de crear_clientes.
+
