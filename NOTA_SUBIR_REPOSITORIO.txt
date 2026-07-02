@@ -20,7 +20,14 @@ git push origin main
 
 Despues del commit, podemos revisar los commit realizados: 
      - git log
-     -
+     - git log  --oneline
+
+     usa "q" para usar los comandos
+
+     NAVEGAR: git branch
+               git checkout "f639f69"
+
+               regresar: git checkout main
 
 CLONACION: 
 git config user.name "sanlith340-droid" configuracion local
