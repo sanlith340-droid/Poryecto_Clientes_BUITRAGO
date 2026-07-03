@@ -41,3 +41,13 @@ El proyecto simula el núcleo financiero de una plataforma comercial. Trabajarem
 
 7. Comprobar el funcionamiento de crear_clientes.
 
+Se edito el endpoint listar una sola factura , y el manej de excepciones
+
+# 9 =================
+
+# Editar el endpoint crear factura, segun el modelo 
+
+1. Editar el endpoint crear_facutra
+
+2. comprobar el funcionamiento  
+
