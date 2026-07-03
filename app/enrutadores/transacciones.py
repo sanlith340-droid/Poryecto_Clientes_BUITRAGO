@@ -1,9 +1,11 @@
 from fastapi import APIRouter, HTTPException, status
 from app.modelos.transacciones import Transaccion, TransaccionCrear, TransaccionEditar
 from app.enrutadores.factura import lista_facturas
+from app.listas import lista_facturas , lista_transacciones
 
 rutas_transacciones = APIRouter()
-lista_transacciones: list[Transaccion] = []
+
+#lista_transacciones: list[Transaccion] = []
 
 
 # Endpoint para listar todas las transacciones

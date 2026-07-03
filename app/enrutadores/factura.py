@@ -1,9 +1,13 @@
 from fastapi import APIRouter, HTTPException, status
+from app.modelos.clientes import Cliente
 from app.modelos.facturas import Factura, FacturaCrear, FacturaEditar
 from app.enrutadores.clientes import lista_clientes
+from app.listas import lista_clientes, lista_facturas
 
 rutas_facturas = APIRouter()
-lista_facturas: list[Factura] = []
+
+#lista_clientes: list[Cliente] = []
+#lista_facturas: list[Factura] = []
 
 
 # Endpoint para listar todas las facturas

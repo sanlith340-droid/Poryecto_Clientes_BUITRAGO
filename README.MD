@@ -1,6 +1,6 @@
 # TECNOLOGIA: FastAPI
 
-# AUTOR: Instructor Jhonny Guerrero
+# AUTOR: Instructor Santiago Buitrago Goyeneche
 
 # DESCRIPCION: Sistema de Gestión de Facturación y Transacciones (API de Aprendizaje)
 
