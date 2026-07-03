@@ -1,32 +1,21 @@
-from fastapi import FastAPI, HTTPException , status
-
-#from app.enrutadores.clientes import rutas_clientes
+from fastapi import FastAPI, HTTPException, status
+from .modelos.clientes import Cliente, Clientecrear, ClienteEditar
+from .modelos.facturas import Factura, FacturaCrear, FacturaEditar
+from .modelos.transacciones import Transaccion,TransaccionCrear, TransaccionEditar
+from .enrutadores import clientes, factura, transacciones
 from .enrutadores.clientes import rutas_clientes
-
-#from app.enrutadores.factura import rutas_factura
 from .enrutadores.factura import rutas_facturas
-
-#from app.enrutadores.transacciones import rutas_transacciones
 from .enrutadores.transacciones import rutas_transacciones
-
-#from app.conexion_bd import crear_tablas
+from .listas import lista_clientes, lista_facturas, lista_transacciones
 from .conexion_bd import crear_tablas
 
-app = FastAPI(lifespan=crear_tablas) 
+app = FastAPI(lifespan=crear_tablas)
 
 
-
-#Incluir ruta de clientes
-app.include_router(rutas_clientes, tags=["Clientes"])
-#Incluir ruta de facturas
-app.include_router(rutas_facturas, tags=["Facturas"])
-#Incluir ruta de transacciones
-app.include_router(rutas_transacciones, tags=["Transacciones"])
-
-#x=12 - init <- creacion de variable y su tipo de dato
-#x=ana - str
-
-#get: obtener o listar
+#incluir rutas de clientes
+app.include_router(clientes.rutas_clientes, tags=["Clientes"])
+app.include_router(factura.rutas_facturas, tags=["Facturas"])
+app.include_router(transacciones.rutas_transacciones, tags=["Transacciones"])
 
 
 

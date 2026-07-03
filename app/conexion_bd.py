@@ -1,6 +1,6 @@
-from sqlmodel import SQLModel, create_engine, Session
 from fastapi import FastAPI ,Depends
 from typing import Annotated
+from sqlmodel import Session, SQLModel, create_engine
 
 
 nombre_bd = "bd_Cliente.sqlite3"

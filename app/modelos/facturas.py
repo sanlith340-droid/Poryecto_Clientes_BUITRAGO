@@ -1,7 +1,7 @@
 from pydantic import BaseModel, computed_field
-
+from sqlmodel import SQLModel, Field, Relationship
 from .transacciones import Transaccion
-from .clientes import Cliente 
+from .clientes import Cliente, ClienteLeer
 from datetime import datetime
 
 #Crear el modelo de transacciones (id,fecha, vr_total, cliente )
@@ -9,33 +9,45 @@ from datetime import datetime
 #computed_field // sirve para que pydantic reconozca la propiedad como un campo de lectura
 
 
-class FacturaBase(BaseModel):
-    fecha: str = datetime.now()
-    cliente : Cliente  # Esta es la relacion con el cliente (objeto)
-    transacciones: list[Transaccion] = [] 
-    
+class FacturaBase(SQLModel):
+    fecha: str = Field(default=datetime.now()) 
+    #cliente: Cliente
+    #transacciones: list[Transaccion] = []
+
+
     @computed_field
-    @property 
-    def vr_total(self) -> float:
-        #calcular (cantidad * vr_unitario)
-        #consultar el id actual de factura
-        factura_id_actual = getattr(self, "id", None)
-        total_factura = 0.0
-        
-        if not factura_id_actual or not self.transacciones:
-            return total_factura
-        #recorrer la lista de transaciones segun el factura_id
+    @property
+    def vr_total(self) -> float:        
+        total_facturas = 0.0
+        if self.transacciones== None:
+            return total_facturas
+        #recorrer las transacciones, segun el id de la factura
+
         for transaccion in self.transacciones:
-            if transaccion.factura.id == factura_id_actual:
-                total_factura += transaccion.vr_unitario * transaccion.cantidad
-            
-        return total_factura
-    
+            total_facturas += transaccion.vr_unitario * transaccion.cantidad
+
+        return total_facturas
+
 class FacturaCrear(FacturaBase):
-    pass
+    cliente: Cliente
+    transacciones: list[Transaccion] =[]
+
 
 class FacturaEditar(FacturaBase):
     pass
 
-class Factura(FacturaBase):
-    id: int | None = None
+class Factura(FacturaBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    cliente_id: int = Field(default=None, foreign_key="cliente.id")
+    #crear relaciones virtuales,transacciones - NO en la bd
+    transacciones: list[Transaccion] = Relationship(back_populates="factura")
+    cliente: Cliente = Relationship(back_populates="facturas")
+
+#modelo para mostrar al usurario o el cliente
+class FacturaLeer(FacturaBase):
+    id: int
+    cliente: ClienteLeer
+
+class FacturaLeerCompuesta(FacturaLeer):
+    transacciones: list[Transaccion] = []
+    
