@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, status
-from app.modelos.clientes import Cliente
-from app.modelos.facturas import Factura, FacturaCrear, FacturaEditar
-from app.enrutadores.clientes import lista_clientes
-from app.listas import lista_clientes, lista_facturas
+from ..modelos.clientes import Cliente
+from ..modelos.facturas import Factura, FacturaCrear, FacturaEditar
+from ..enrutadores.clientes import lista_clientes
+from ..listas import lista_clientes, lista_facturas
 
 rutas_facturas = APIRouter()
 

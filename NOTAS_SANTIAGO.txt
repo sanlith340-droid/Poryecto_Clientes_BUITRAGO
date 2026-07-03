@@ -8,9 +8,9 @@
 2-ACTIVAR EL ENTORNO : .mi_env\scripts\activate 
 
 3-Instalar los ejecutando los comandos de la consola:
-    pip install fastapi uvicorn
     
     pip install "fastapi[standard]"
+    pip install -r requirements.txt 
     **EN CASO DE TENER UNA VERSION ANTIGUA USA EL COMANDO QUE TE DA LA TERMINAL python.exe -m pip install --upgrade pip
     pip list -> ver la instalacion 
 

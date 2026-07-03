@@ -1,7 +1,9 @@
 from fastapi import APIRouter , HTTPException , status
-from app.modelos.clientes import Cliente, ClienteCrear, ClienteEditar
-from app.listas import lista_clientes
-from app.conexion_bd import sesion_dependencia
+
+#from app.modelos.clientes import Cliente, ClienteCrear, ClienteEditar
+from ..modelos.clientes import Cliente , ClienteCrear , ClienteEditar 
+from ..listas import lista_clientes
+from ..conexion_bd import sesion_dependencia
 
 
 
