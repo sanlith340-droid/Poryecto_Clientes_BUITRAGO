@@ -2,6 +2,7 @@ from sqlmodel import SQLModel, create_engine, Session
 from fastapi import FastAPI ,Depends
 from typing import Annotated
 
+
 nombre_bd = "bd_Cliente.sqlite3"
 url_bd = f"sqlite:///{nombre_bd}"
 

@@ -131,3 +131,5 @@ https://sqlmodel.tiangolo.com/
 5. Editar el archivo modelo cliente, con las propiedades de SqlModel.
 6. Editar archivo main.py, e importar el método crear las tablas.
 7. Comprobar el funcionamiento.
+
+sqlite
