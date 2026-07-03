@@ -29,6 +29,7 @@ class FacturaBase(SQLModel):
         return total_facturas
 
 class FacturaCrear(FacturaBase):
+    
     cliente: Cliente
     transacciones: list[Transaccion] =[]
 
