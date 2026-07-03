@@ -133,3 +133,7 @@ https://sqlmodel.tiangolo.com/
 7. Comprobar el funcionamiento.
 
 sqlite
+
+ sqlite3 .\bd_Cliente.sqlite3
+ .table 
+select * from cliente; 
