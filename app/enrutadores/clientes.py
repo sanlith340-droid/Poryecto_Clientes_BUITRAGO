@@ -1,6 +1,7 @@
 from fastapi import APIRouter , HTTPException , status
 from app.modelos.clientes import Cliente, ClienteCrear, ClienteEditar
 from app.listas import lista_clientes
+from app.conexion_bd import sesion_dependencia
 
 
 
@@ -16,24 +17,23 @@ async def listar_clientes():
 
 #endpoint / para lisar un solo cliente  de la lista
 
-@rutas_clientes.get("/clientes{cliente_id}",response_model=Cliente)
-async def listar_clientes(cliente_id: int):
-    
-    #recorrer la lista clientes
-    for i , obj_cliente in enumerate (lista_clientes):
-        if obj_cliente.id == cliente_id:
-            return  obj_cliente 
-        raise HTTPException(status_code=400, detail=f"El cliente con id {cliente_id} , no existe")
+async def ListarCliente(cliente_id: int, mi_sesion: sesion_dependencia):
+    cliente_bd = mi_sesion.get(Cliente, cliente_id)
+    if not cliente_bd:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Cliente con id {cliente_id} no encontrado"
+        )
+    return cliente_bd
         
 #
 #endpoint / para crear  un cliente, y agregar a la lista
 @rutas_clientes.post("/clientes",response_model=Cliente)
-async def crear_cliente(datos_cliente: ClienteCrear):
+async def crear_cliente(datos_cliente: ClienteCrear , mi_sesion: sesion_dependencia):
     cliente_val = Cliente.model_validate(datos_cliente.model_dump())
-    #generar id
-    id_cliente = len(lista_clientes)+1
-    cliente_val.id = id_cliente
-    lista_clientes.append(cliente_val)
+    mi_sesion.add(cliente_val)
+    mi_sesion.commit()
+    mi_sesion.refresh(cliente_val)
     return cliente_val
 
 #endpoint / para crear  un cliente, y agregar a la lista

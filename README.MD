@@ -110,3 +110,24 @@ fastapi dev app/main.py
 2. Cortar el código de las rutas del archivo main.py y copiarlos según corresponda
 3. Comprobar las rutas ahora no existen en la UI de Swagger
 4. Incluir en main.py las rutas
+
+# 13 =================
+
+# Manejo de BD
+
+**mysql+pymysql://usuario:contraseña@host:puerto/nombre_bd**
+**postgresql://usuario:contraseña@host:puerto/nombre_bd**
+**sqlite:///nombre_bd.sqlite3**
+
+1. Instalar Dependencia sqlmodel // pip install sqlmodel (En caso que no aparezca sigue estos pasos: 
+- Ctrl + Shift + P 
+- Python: Select Interpreter
+- Después reinicia VS Code.
+- python -m pip install sqlmodel)
+https://sqlmodel.tiangolo.com/
+2. Editar el requirements.txt
+3. Editar el archivo conexion_bd.py, nombre bd, url bd, motor, crear sesion, inyeccion dependencia, definir método para crear las tablas.
+4. Editar el archivo enrutador cliente, importar la dependencia de sesión creada anteriormente, y utilizar el add, commit, y refresh de la sesión, y poder guardar los datos en la bd.
+5. Editar el archivo modelo cliente, con las propiedades de SqlModel.
+6. Editar archivo main.py, e importar el método crear las tablas.
+7. Comprobar el funcionamiento.
