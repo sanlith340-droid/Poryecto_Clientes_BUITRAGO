@@ -102,3 +102,11 @@ proyecto_clientes/
 
 fastapi dev app/main.py
 
+# Manejo de Enrutadores o Routers
+
+☼
+
+1. Editar los archivos de la carpeta enrutador (instanciar la clase ROUTER)
+2. Cortar el código de las rutas del archivo main.py y copiarlos según corresponda
+3. Comprobar las rutas ahora no existen en la UI de Swagger
+4. Incluir en main.py las rutas
