@@ -4,7 +4,7 @@ from pydantic import BaseModel
 class TransaccionBase(BaseModel):
     cantidad: int
     vr_unitario: float
-    id_factura: int
+    
 
 class TransaccionCrear(TransaccionBase):
     pass
@@ -14,4 +14,5 @@ class TransaccionEditar(TransaccionBase):
 
 class Transaccion(TransaccionBase):
     id: int | None = None
-    #aqui va la relacion con el modelo cliente solo un campo
+    id_factura: int | None = None  #aqui va la relacion con el modelo factura solo un campo
+    #aqui va la relacion con el modelo factura solo un campo

@@ -103,6 +103,7 @@ async def crear_factura(cliente_id: int, datos_factura: FacturaCrear):
     factura_val.cliente = cliente_encontrado
     #generar id de factura
     factura_val.id = len(lista_facturas)+1
+    lista_facturas.append(factura_val)
     return factura_val
 
 @app.patch("/facturas/{id_factura}", response_model=Factura)
@@ -118,7 +119,7 @@ async def eliminar_factura(id_factura):
 
 @app.get("/transacciones", response_model=list[Transaccion])
 async def listar_ftransacciones():
-    pass
+    return lista_transacciones
 
 
 @app.get("/transacciones/{id_transaccion}", response_model=Transaccion)
@@ -126,16 +127,56 @@ async def listar_transaccion(id_transaccion: int):
     pass
 
 
-@app.post("/transacciones/{id_factura}", response_model=Transaccion)
-async def crear_transaccion(id_factura: int, datos_transaccion: Transaccion):
-    pass
+@app.post("/transacciones/{factura_id}", response_model=Transaccion)
+async def crear_transaccion(factura_id: int, datos_transaccion: TransaccionCrear):
+    #Buscar la factura  
+    factura_encontrada = None 
+    for factura in lista_facturas:
+        if factura.id == factura_id:
+            factura_encontrada = factura
+    #Mensaje si no existe la factura
+    if not factura_encontrada:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+                            detail=f"La factura con id {factura_id} , no existe")
+    
+    #validar datos de la transaccion
+    transaccion_val= Transaccion.model_validate(datos_transaccion.model_dump())
+    transaccion_val.id_factura = factura_id
+    factura_encontrada.transacciones.append(transaccion_val)
+    
+    #generar id de transaccion
+    transaccion_val.id = len(lista_transacciones)+1
+    
+    return transaccion_val
 
 
 @app.patch("/transacciones/{id_transaccion}", response_model=Transaccion)
-async def editar_transaccion(id_transaccion: int, datos_transaccion: Transaccion):
-    pass
+async def editar_transaccion(id_transaccion: int, datos_transaccion: TransaccionEditar):
+    for i, obj_transaccion in enumerate(lista_transacciones):
+        if obj_transaccion.id == id_transaccion:
+            # Validar los datos recibidos
+            transaccion_val = Transaccion.model_validate(datos_transaccion.model_dump())
+            transaccion_val.id = id_transaccion
+
+            # Reemplazar la transacción en la lista
+            lista_transacciones[i] = transaccion_val
+
+            return transaccion_val
+
+    raise HTTPException(
+        status_code=400,
+        detail=f"La transacción con id {id_transaccion} no existe"
+    )
 
 
 @app.delete("/transacciones/{id_transaccion}", response_model=Transaccion)
 async def eliminar_transaccion(id_transaccion: int):
-    pass
+    for i, obj_transaccion in enumerate(lista_transacciones):
+        if obj_transaccion.id == id_transaccion:
+            transaccion_eliminada = lista_transacciones.pop(i)
+            return transaccion_eliminada
+
+    raise HTTPException(
+        status_code=400,
+        detail=f"La transacción con id {id_transaccion} no existe"
+    )
