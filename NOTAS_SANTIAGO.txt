@@ -21,6 +21,9 @@
         
        * MODO DESAROLLO  :  Fastapi dev Main.py 
 
+                            fastapi dev app/main.py: despues de la estructura
+
+
     VER EL SWAGGER INTERFAZ GRAFICA
 
       server   Server started at http://127.0.0.1:8000

@@ -62,3 +62,43 @@ Se edito el endpoint listar una sola factura , y el manej de excepciones
 
 **Ejercicio Terminar, los endpoint de modificar y eliminar**
 
+proyecto_clientes/
+│
+├── app/
+│   ├── __init__.py
+│   ├── main.py                # Punto de entrada de FastAPI
+│   ├── conexion_bd.py         # Configuración de la base de datos
+│   │
+│   ├── modelos/               # Modelos SQLAlchemy
+│   │   ├── __init__.py
+│   │   ├── clientes.py
+│   │   ├── facturas.py
+│   │   └── transacciones.py
+│   │
+│   ├── esquemas/              # Modelos Pydantic
+│   │   ├── __init__.py
+│   │   ├── clientes.py
+│   │   ├── facturas.py
+│   │   └── transacciones.py
+│   │
+│   ├── enrutador/             # Endpoints (APIRouter)
+│   │   ├── __init__.py
+│   │   ├── clientes.py
+│   │   ├── facturas.py
+│   │   └── transacciones.py
+│   │
+│   ├── crud/                  # Funciones para acceder a la BD
+│   │   ├── __init__.py
+│   │   ├── clientes.py
+│   │   ├── facturas.py
+│   │   └── transacciones.py
+│   │
+│   └── dependencias.py        # Dependencias (get_db, autenticación, etc.)
+│
+├── .venv/
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+fastapi dev app/main.py
+
